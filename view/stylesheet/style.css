@@ -1,0 +1,46 @@
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.margin-top-60 {
+    margin-top: 60px;
+}
+
+.hour-block {
+    position: relative;
+}
+
+.hour-block p {
+    border: none;
+    position: absolute;
+    left: -16px;
+}
+
+.hidden-table thead tr th {
+    border: none;
+}
+
+.calendar-width {
+    width: 15%;
+}
+
+.modal-window {
+    width: 50%;
+}
+
+.time-line th {
+    cursor: pointer;
+}
+
+
+.modal-body .form-group {
+    border: none;
+}
