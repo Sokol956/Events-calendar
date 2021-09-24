@@ -14,6 +14,12 @@
     margin-top: 60px;
 }
 
+.show-date {
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 20px;
+}
+
 .hour-block {
     position: relative;
 }

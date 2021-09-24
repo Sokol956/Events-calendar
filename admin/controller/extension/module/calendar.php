@@ -94,7 +94,7 @@ class ControllerExtensionModuleCalendar extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('extension/module/calendar', $data));
+        $this->response->setOutput($this->load->view('extension/module/calendar/calendar', $data));
 
 
     }
@@ -105,8 +105,18 @@ class ControllerExtensionModuleCalendar extends Controller {
         $halls = $this->model_extension_calendar->getHalls();
         $data['halls'] = $halls;
         $data['halls_count'] = count($halls);
+        $data['day'] = $this->request->get['day'];
 
         $this->response->setOutput($this->load->view( 'extension/module/calendar/calendar_main', $data));
+    }
+
+    public function getHalls() {
+        $this->load->model('extension/calendar');
+
+        $halls = json_encode($this->model_extension_calendar->getHalls());
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput($halls);
     }
 
     public function meetingsInfo() {
@@ -114,7 +124,6 @@ class ControllerExtensionModuleCalendar extends Controller {
 
         $day = $this->request->get['day'];
         $meetings = json_encode($this->model_extension_calendar->getMeetingsByDay($day));
-
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput($meetings);
     }
@@ -127,6 +136,7 @@ class ControllerExtensionModuleCalendar extends Controller {
         $data['meeting'] = $meeting;
         $guests = $this->model_extension_calendar->getMeetingGuests($meetingId);
         $data['guests'] = $guests;
+        $data['$meetingId'] = $meetingId;
 
 
         $this->response->setOutput($this->load->view( 'extension/module/calendar/calendar_meeting', $data));
@@ -135,10 +145,64 @@ class ControllerExtensionModuleCalendar extends Controller {
     public function saveHall() {
         $this->load->model('extension/calendar');
 
-        $hallName = $this->request->get['inputHallName'];
-        $hallStartTime = $this->request->get['inputStartTime'];
-        $hallEndTime = $this->request->get['inputEndTime'];
+        $hallName = $this->request->post['hallName'];
+        $hallStartTime = $this->request->post['hallTimeStart'];
+        $hallEndTime = $this->request->post['hallTimeEnd'];
+
         $this->model_extension_calendar->insertHall($hallName, $hallStartTime, $hallEndTime);
+    }
+
+    public function getHall() {
+        $this->load->model('extension/calendar');
+
+        $hallId = $this->request->get['hallId'];
+        $hall = $this->model_extension_calendar->getHallById($hallId);
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($hall));
+    }
+
+    public function editHall() {
+        $this->load->model('extension/calendar');
+
+        $hallName = $this->request->post['hallName'];
+        $hallStartTime = $this->request->post['hallTimeStart'];
+        $hallEndTime = $this->request->post['hallTimeEnd'];
+        $hallId = $this->request->post['hallId'];
+
+        $this->model_extension_calendar->editHall($hallName, $hallStartTime, $hallEndTime, $hallId);
+    }
+
+    public function deleteHall() {
+        $this->load->model('extension/calendar');
+
+        $hallId = $this->request->post['hallId'];
+
+        $this->model_extension_calendar->deleteHallById($hallId);
+    }
+
+    public function saveGuest() {
+        $this->load->model('extension/calendar');
+
+        $meetingId = $this->request->post['meetingId'];
+        $guestFirstName= $this->request->post['$guestFirstName'];
+        $guestSecondName= $this->request->post['$guestSecondName'];
+        $guestThirdName= $this->request->post['$guestThirdName'];
+
+        $this->model_extension_calendar->insertGuest($guestFirstName, $guestSecondName, $guestThirdName, $meetingId);
+
+    }
+
+    public function saveMeeting() {
+        $this->load->model('extension/calendar');
+
+        $meetingName = $this->request->post['meetingName'];
+        $meetingStartTime = $this->request->post['meetingTimeStart'];
+        $meetingEndTime = $this->request->post['meetingTimeEnd'];
+        $meetingRepeatOption = $this->request->post['meetingRepeat'];
+        $meetingRepeatDayEnd = $this->request->post['day'];
+
+        var_dump($meetingName, $meetingStartTime, $meetingEndTime, $meetingRepeatOption, $meetingRepeatDayEnd);
+        //$this->model_extension_calendar->insertHall($hallName, $hallStartTime, $hallEndTime);
     }
 
 
@@ -170,6 +234,6 @@ class ControllerExtensionModuleCalendar extends Controller {
             `meeting_id` int(11) NOT NULL,
             PRIMARY KEY (`guest_id`)
         )ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;");
-        
+
     }
 }

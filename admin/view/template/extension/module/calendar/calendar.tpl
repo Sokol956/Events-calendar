@@ -15,7 +15,6 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
             </div>
             <?php } ?>
-            <div class="testing"></div>
             <div id="main-wrap" class="panel panel-default"></div>
         </div>
     </div>
@@ -26,7 +25,7 @@
         <div class="modal-content ">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Добавление/редактирование зала</h4>
+                <h4 class="modal-title" id="myModalLabel">Настройки зала</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -36,32 +35,32 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputStartTime" class="control-label col-xs-2 margin-top-10">Начало работы</label>
+                    <label for="inputStartTime" class="control-label col-xs-2 margin-top-10">Начало работы зала</label>
                     <select  class="form-control" id="inputStartTime">
-                        <option  label = "00:00:00">
-                        <option  label = "00:30:00">
+                        <option  label = "00:00:00" value="00:00:00">
+                        <option  label = "00:30:00" value="00:30:00">
                         <?php for ($i = 1; $i <= 9; $i++) { ?>
-                        <option  label = "0<?php echo $i ?>:00:00">
-                        <option  label = "0<?php echo $i ?>:30:00">
+                        <option  label = "0<?php echo $i ?>:00:00" value="0<?php echo $i ?>:00:00">
+                        <option  label = "0<?php echo $i ?>:30:00" value="0<?php echo $i ?>:30:00">
                         <?php } ?>
                         <?php for ($i = 10; $i <= 23; $i++) { ?>
-                        <option  label = "<?php echo $i ?>:00:00">
-                        <option  label = "<?php echo $i ?>:30:00">
+                        <option  label = "<?php echo $i ?>:00:00" value="<?php echo $i ?>:00:00">
+                        <option  label = "<?php echo $i ?>:30:00" value="<?php echo $i ?>:30:00">
                         <?php } ?>
                     </select>
                 </div>
                 <div class="form-group margin-top-10">
-                    <label for="inputEndTime" class="control-label col-xs-2 margin-top-10">Конец работы</label>
+                    <label for="inputEndTime" class="control-label col-xs-2 margin-top-10">Конец работы зала</label>
                     <select class="form-control" id="inputEndTime">
-                        <option  label = "00:00:00">
-                        <option  label = "00:30:00">
+                        <option  label = "00:00:00" value="00:00:00">
+                        <option  label = "00:30:00" value="00:30:00">
                         <?php for ($i = 1; $i <= 9; $i++) { ?>
-                        <option  label = "0<?php echo $i ?>:00:00">
-                        <option  label = "0<?php echo $i ?>:30:00">
+                        <option  label = "0<?php echo $i ?>:00:00" value="0<?php echo $i ?>:00:00">
+                        <option  label = "0<?php echo $i ?>:30:00" value="0<?php echo $i ?>:30:00">
                         <?php } ?>
                         <?php for ($i = 10; $i <= 23; $i++) { ?>
-                        <option  label = "<?php echo $i ?>:00:00">
-                        <option  label = "<?php echo $i ?>:30:00">
+                        <option  label = "<?php echo $i ?>:00:00" value="<?php echo $i ?>:00:00">
+                        <option  label = "<?php echo $i ?>:30:00" value="<?php echo $i ?>:30:00">
                         <?php } ?>
                     </select>
                 </div>
@@ -74,47 +73,12 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="addGuest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-window">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Добавление/редактирование участника</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="inputFirstName" class="control-label col-xs-2 margin-top-10">Имя</label>
-                    <div class="col-xs-10 ">
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="Имя">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputSecondName" class="control-label col-xs-2 margin-top-10">Фамилия</label>
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control" id="inputSecondName" placeholder="Фамилия">
-                    </div>
-                </div>
-                <div class="form-group margin-top-10">
-                    <label for="inputLastName" class="control-label col-xs-2 margin-top-10">Отчество</label>
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Отчество">
-                    </div>
-                </div>
-            </div>
-            <div class="mess"></div>
-            <div class="modal-footer margin-top-60">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="addMeeting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-window">
         <div class="modal-content ">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Добавление/редактирование встречи</h4>
+                <h4 class="modal-title" id="myModalLabel">Настройки встречи</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
@@ -140,7 +104,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputMeetingEnd" class="control-label col-xs-2 margin-top-10">Время окончания</label>
-                    <select  class="form-control col-xs-10" id="inputMeetingStart">
+                    <select  class="form-control col-xs-10" id="inputMeetingEnd">
                         <option  label = "00:00:00">
                         <option  label = "00:30:00">
                             <?php for ($i = 1; $i <= 9; $i++) { ?>
@@ -163,16 +127,54 @@
                     </select>
                     <p class="col-lg-2 col-sm-2 col-xs-2 margin-top-10">Повторять до:</p>
                     <div class="col-lg-1 col-sm-1 col-xs-1"></div>
-                    <input  type="date" class="col-lg-2 col-sm-2 col-xs-2 form-control calendar-width date-repeat margin-top-10" id="date" name="date">
+                    <input  type="date" class="col-lg-2 col-sm-2 col-xs-2 form-control calendar-width date-repeat margin-top-10" id="dateRepeat" name="date">
                 </div>
             </div>
             <div class="mess"></div>
             <div class="modal-footer margin-top-40">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                <button type="button" class="btn btn-primary save-meeting">Сохранить изменения</button>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="addGuest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-window">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Участник встречи</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputFirstName" class="control-label col-xs-2 margin-top-10">Имя</label>
+                    <div class="col-xs-10 ">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="Имя">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputSecondName" class="control-label col-xs-2 margin-top-10">Фамилия</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="inputSecondName" placeholder="Фамилия">
+                    </div>
+                </div>
+                <div class="form-group margin-top-10">
+                    <label for="inputLastName" class="control-label col-xs-2 margin-top-10">Отчество</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Отчество">
+                    </div>
+                </div>
+            </div>
+            <div class="mess"></div>
+            <div class="modal-footer margin-top-60">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary save-guest">Сохранить изменения</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editHall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div class="modal fade" id="editMeeting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div class="modal fade" id="editGuest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <input class="hidden token" value="<?php echo $token; ?>">
 
